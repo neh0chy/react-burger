@@ -1,0 +1,39 @@
+.list {
+  width: 103%;
+  margin: 0;
+  padding: 0;
+  margin: 100px 0 40px;
+  list-style: none;
+}
+
+.listSlider {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  margin: 16px 16px;
+  gap: 16px;
+  height: 465px;
+  overflow-y: scroll;
+}
+
+.listSlider::-webkit-scrollbar { 
+  width: 8px;
+  background-color: #2F2F37;
+}
+
+.listSlider::-webkit-scrollbar-thumb {
+  height: 292px;
+  background-color: #8585AD;
+}
+
+.element {
+  margin-left: 48px;
+}
+
+.elementSlider {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
