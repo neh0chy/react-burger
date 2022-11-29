@@ -5,7 +5,7 @@ import styles from './burger-ingredients-tabs.module.css';
 export default function BurgerIngredientsTabs() {
   const [current, setCurrent] = React.useState('one')
   return (
-    <div className={styles.tabs} style={{ display: 'flex' }}>
+    <div className={styles.tabs}>
       <Tab value="one" active={current === 'one'} onClick={setCurrent}>
         Булки
       </Tab>

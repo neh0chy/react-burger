@@ -1,6 +1,8 @@
 import styles from './burger-ingredients-card.module.css';
 import {CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
 import {Counter} from '@ya.praktikum/react-developer-burger-ui-components';
+import PropTypes from "prop-types";
+import { propTypesList } from '../../utils/data';
 
 export default function BurgerCard(props) {
   return (
@@ -21,3 +23,7 @@ export default function BurgerCard(props) {
     </article>
   );
 }
+
+BurgerCard.propTypes = {
+  data: PropTypes.arrayOf(propTypesList.isRequired).isRequired
+};

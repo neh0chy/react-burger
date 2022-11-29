@@ -1,4 +1,4 @@
-.headerButton{
+.headerButton {
   margin: 0;
   padding: 16px 20px;
   display: flex;
@@ -8,4 +8,9 @@
   color: inherit;
   border-radius: 40px;
   cursor: pointer;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
 }

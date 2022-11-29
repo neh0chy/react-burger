@@ -1,7 +1,8 @@
 import styles from './burger-constructor-elements.module.css';
 import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components';
 import { DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-
+import PropTypes from "prop-types";
+import { propTypesList } from '../../utils/data';
 
 function renderTopElement(item) {
   return (
@@ -66,3 +67,7 @@ export default function BurgerConstructorElements(props) {
     </ul>
   );
 }
+
+BurgerConstructorElements.propTypes = {
+  data: PropTypes.arrayOf(propTypesList.isRequired).isRequired
+};

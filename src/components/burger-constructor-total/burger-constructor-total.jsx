@@ -1,6 +1,8 @@
 import styles from './burger-constructor-total.module.css';
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
+import PropTypes from "prop-types";
+import { propTypesList } from '../../utils/data';
 
 export default function ConstructorTotal(props) {
   return (
@@ -15,3 +17,7 @@ export default function ConstructorTotal(props) {
     </div>
   );
 }
+
+ConstructorTotal.propTypes = {
+  data: PropTypes.arrayOf(propTypesList.isRequired).isRequired
+};

@@ -1,5 +1,7 @@
 import styles from './burger-ingredients-scroll.module.css';
 import BurgerIngredientsCards from '../burger-ingredients-cards/burger-ingredients-cards';
+import PropTypes from "prop-types";
+import { propTypesList } from '../../utils/data';
 
 export default function BurgerIngredientsScroll(props) {
   const bunFilter = props.data.filter((item) => item.type === "bun");
@@ -23,3 +25,7 @@ export default function BurgerIngredientsScroll(props) {
     </ul>
   );
 }
+
+BurgerIngredientsScroll.propTypes = {
+  data: PropTypes.arrayOf(propTypesList.isRequired).isRequired
+};

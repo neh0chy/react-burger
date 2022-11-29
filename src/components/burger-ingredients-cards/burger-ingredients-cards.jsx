@@ -1,5 +1,7 @@
 import styles from './burger-ingredients-cards.module.css';
 import BurgerCard from '../burger-ingredients-card/burger-ingredients-card';
+import PropTypes from "prop-types";
+import { propTypesList } from '../../utils/data';
 
 export default function BurgerIngredientsCards(props) {
   return (
@@ -12,3 +14,7 @@ export default function BurgerIngredientsCards(props) {
     </ul>
   );
 }
+
+BurgerIngredientsCards.propTypes = {
+  data: PropTypes.arrayOf(propTypesList.isRequired).isRequired
+};
