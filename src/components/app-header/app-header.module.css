@@ -22,3 +22,21 @@
   display: flex;
   gap: 8px;
 }
+
+.headerButton {
+  margin: 0;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: none;
+  color: inherit;
+  border-radius: 40px;
+  cursor: pointer;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}

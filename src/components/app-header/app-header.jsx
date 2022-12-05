@@ -1,10 +1,5 @@
 
-import {BurgerIcon} from '@ya.praktikum/react-developer-burger-ui-components';
-import {ListIcon} from '@ya.praktikum/react-developer-burger-ui-components';
-import {Logo} from '@ya.praktikum/react-developer-burger-ui-components';
-import {ProfileIcon} from '@ya.praktikum/react-developer-burger-ui-components';
-import HeaderButton from '../header-button/header-button';
-
+import { BurgerIcon, ListIcon, Logo, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import styles from './app-header.module.css';
 
 export default function AppHeader() {
@@ -12,23 +7,26 @@ export default function AppHeader() {
     <header className={styles.header}>
       <div className={styles.headerContainer}>
         <nav className={styles.navBar}>
-          <HeaderButton
-            icon={<BurgerIcon type="primary" />}
-            classes={'text text_type_main-default'}>
-            Конструктор
-          </HeaderButton>
-          <HeaderButton
-            icon={<ListIcon type="secondary" />}
-            classes={'text text_type_main-default text_color_inactive'}>
-            Лента заказов
-          </HeaderButton>
+          <a className={styles.link} href="!#">
+            <button className={styles.headerButton}>
+              <BurgerIcon type="primary" />
+              <p classes={'text text_type_main-default'}>Конструктор</p>
+            </button>
+          </a>
+          <a className={styles.link} href="!#">
+            <button className={styles.headerButton}>
+              <ListIcon type="secondary" />
+              <p classes={'text text_type_main-default text_color_inactive'}>Лента заказов</p>
+            </button>
+          </a>
         </nav>
         <div className={styles.logo}><Logo /></div>
-        <HeaderButton
-          icon={<ProfileIcon type="secondary" />}
-          classes={'text text_type_main-default text_color_inactive'}>
-          Личный кабинет
-        </HeaderButton>
+        <a className={styles.link} href="!#">
+          <button className={styles.headerButton}>
+            <ProfileIcon type="secondary" />
+            <p classes={'text text_type_main-default text_color_inactive'}>Личный кабинет</p>
+          </button>
+        </a>
       </div>
     </header>
   );
