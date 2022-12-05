@@ -25,7 +25,7 @@ export default function BurgerIngredients(props) {
         </Tab>
       </div>
       <ul className={styles.list}>
-        <li className={styles.li} key={1}>
+        <li className={styles.li}>
           <h2 className='text text_type_main-medium'>Булки</h2>
           <ul className={styles.cards}>
             {bunFilter.map((item) => (
@@ -49,7 +49,7 @@ export default function BurgerIngredients(props) {
             ))}
           </ul>
         </li>
-        <li className={styles.li} key={2}>
+        <li className={styles.li}>
           <h2 className='text text_type_main-medium'>Соусы</h2>
           <ul className={styles.cards}>
             {sauceFilter.map((item) => (
@@ -73,7 +73,7 @@ export default function BurgerIngredients(props) {
             ))}
           </ul>
         </li>
-        <li className={styles.li} key={3}>
+        <li className={styles.li}>
           <h2 className='text text_type_main-medium'>Начинки</h2>
           <ul className={styles.cards}>
             {mainFilter.map((item) => (
