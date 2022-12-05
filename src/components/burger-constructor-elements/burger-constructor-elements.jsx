@@ -6,6 +6,7 @@ import { propTypesList } from '../../utils/data';
 
 export default function BurgerConstructorElements(props) {
   const bun = props.data.find(item => item.type === 'bun');
+  const nonbun = props.data.filter(item => item.type !== 'bun');
 
   return (
     <div className={styles.container}>
@@ -19,8 +20,7 @@ export default function BurgerConstructorElements(props) {
           />
       </div>
       <ul className={styles.list}>
-        {props.data.map((elem) => {
-          if (elem.type !== "bun") {
+        {nonbun.map((elem) => {
             return (
               <li key={elem._id} className={styles.listElement}>
                 <DragIcon type="primary" />
@@ -31,7 +31,6 @@ export default function BurgerConstructorElements(props) {
                 />
               </li>
             );
-          } else {return null}
         })}
       </ul>
       <div className={styles.element}>
