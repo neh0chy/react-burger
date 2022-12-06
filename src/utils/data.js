@@ -4,15 +4,15 @@ export const propTypesList = PropTypes.shape({
   _id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  proteins: PropTypes.number.isRequired,
-  fat: PropTypes.number.isRequired,
-  carbohydrates: PropTypes.number.isRequired,
-  calories: PropTypes.number.isRequired,
+  proteins: PropTypes.number,
+  fat: PropTypes.number,
+  carbohydrates: PropTypes.number,
+  calories: PropTypes.number,
   price: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
-  image_mobile: PropTypes.string.isRequired,
-  image_large: PropTypes.string.isRequired,
-  __v: PropTypes.number.isRequired,
+  image_mobile: PropTypes.string,
+  image_large: PropTypes.string,
+  __v: PropTypes.number,
 });
 
 export const serverData = [
@@ -230,9 +230,9 @@ export const serverData = [
   }
 ]
 
-export const serverData_list = [
+export const serverDataConstructor = [
   {
-    "_id":"60666c42cc7b410027a1a9b1",
+    "_id":"60666c42cc7b410f27a1a9b1",
     "name":"Краторная булка N-200i",
     "type":"bun",
     "proteins":80,
@@ -246,7 +246,7 @@ export const serverData_list = [
     "__v":0
    },
    {
-    "_id":"60666c42cc7b410027a1a9b9",
+    "_id":"60666c42cc7b410g27a1a9b9",
     "name":"Соус традиционный галактический",
     "type":"sauce",
     "proteins":42,
@@ -260,7 +260,7 @@ export const serverData_list = [
     "__v":0
    },
    {
-    "_id":"60666c42cc7b410027a1a9b4",
+    "_id":"60666c42cc7b410f27a1a9b4",
     "name":"Мясо бессмертных моллюсков Protostomia",
     "type":"main",
     "proteins":433,
@@ -274,7 +274,7 @@ export const serverData_list = [
     "__v":0
    },
    {
-    "_id":"60666c42cc7b410027a1a9bc",
+    "_id":"60666c42cc7b41002ga1a9bc",
     "name":"Плоды Фалленианского дерева",
     "type":"main",
     "proteins":20,
@@ -288,7 +288,7 @@ export const serverData_list = [
     "__v":0
    },
    {
-    "_id":"60666c42cc7b410027a1a9bb",
+    "_id":"60666c42cc7b4100f7a1a9bb",
     "name":"Хрустящие минеральные кольца",
     "type":"main",
     "proteins":808,
@@ -302,7 +302,7 @@ export const serverData_list = [
     "__v":0
    },
    {
-    "_id":"60666c42cc7b410027a1a9bb",
+    "_id":"60666c42cc7b4s0027a1a9bb",
     "name":"Хрустящие минеральные кольца",
     "type":"main",
     "proteins":808,
@@ -316,7 +316,7 @@ export const serverData_list = [
     "__v":0
    },
    {
-    "_id":"60666c42cc7b410027a1a9b9",
+    "_id":"60666c42ch7b410027a1a9b9",
     "name":"Соус традиционный галактический",
     "type":"sauce",
     "proteins":42,
@@ -330,7 +330,7 @@ export const serverData_list = [
     "__v":0
    },
    {
-    "_id":"60666c42cc7b410027a1a9b4",
+    "_id":"60666c42cc7bg10027a1a9b4",
     "name":"Мясо бессмертных моллюсков Protostomia",
     "type":"main",
     "proteins":433,
@@ -344,7 +344,7 @@ export const serverData_list = [
     "__v":0
    },
    {
-    "_id":"60666c42cc7b410027a1a9bc",
+    "_id":"60666c42cf7b410027a1a9bc",
     "name":"Плоды Фалленианского дерева",
     "type":"main",
     "proteins":20,
@@ -358,7 +358,7 @@ export const serverData_list = [
     "__v":0
    },
    {
-    "_id":"60666c42cc7b410027a1a9bb",
+    "_id":"606d6c42cc7b410027a1a9bb",
     "name":"Хрустящие минеральные кольца",
     "type":"main",
     "proteins":808,
@@ -372,7 +372,7 @@ export const serverData_list = [
     "__v":0
    },
    {
-    "_id":"60666c42cc7b410027a1a9bb",
+    "_id":"60666c42cc7b41002da1a9bb",
     "name":"Хрустящие минеральные кольца",
     "type":"main",
     "proteins":808,
@@ -386,7 +386,7 @@ export const serverData_list = [
     "__v":0
    },
    {
-    "_id":"60666c42cc7b410027a1a9b1",
+    "_id":"60666c42cc7b410d27a1a9b1",
     "name":"Краторная булка N-200i",
     "type":"bun",
     "proteins":80,
