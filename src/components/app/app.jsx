@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './app.module.css';
 import AppHeader from '../app-header/app-header';
 import BurgerIngredients from '../burger-ingredients/burger-ingredients';
@@ -6,7 +6,7 @@ import BurgerConstructor from '../burger-constructor/burger-constructor';
 import { serverDataConstructor } from '../../utils/data';
 
 export default function App() {
-  const [data, setData] = React.useState([]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const api = 'https://norma.nomoreparties.space/api/ingredients';

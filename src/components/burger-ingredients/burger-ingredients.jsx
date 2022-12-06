@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './burger-ingredients.module.css';
 import { Tab, CurrencyIcon, Counter } from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from "prop-types";
 import { propTypesList } from '../../utils/data';
+import Modal from '../modal/modal';
 
 export default function BurgerIngredients(props) {
-  const [current, setCurrent] = React.useState('one')
+  const [current, setCurrent] = useState('one');
   const bunFilter = props.data.filter((item) => item.type === "bun");
   const sauceFilter = props.data.filter((item) => item.type === "sauce");
   const mainFilter = props.data.filter((item) => item.type === "main");
+
+  const [details, setDetails] = useState({});
+  const [ingredients, setIngredients] = useState({});
+  const [isOpened, setIsOpened] = useState(false);
+
+  const modalClose = () => {
+    setIsOpened(false);
+  }
+
+  const getModalData = () => {
+    console.log('123')
+    setIsOpened(true);
+  }
 
   return (
     <section className={styles.section}>
@@ -30,7 +44,7 @@ export default function BurgerIngredients(props) {
           <ul className={styles.cards}>
             {bunFilter.map((item) => (
               <li key={item._id}>
-                <article className={styles.card}>
+                <article className={styles.card} onClickCapture={getModalData}>
                   {item.counter && (
                     <Counter count={1} size="default" extraClass="" />
                   )}
@@ -54,7 +68,7 @@ export default function BurgerIngredients(props) {
           <ul className={styles.cards}>
             {sauceFilter.map((item) => (
               <li key={item._id}>
-                <article className={styles.card}>
+                <article className={styles.card} onClickCapture={getModalData}>
                   {item.counter && (
                     <Counter count={1} size="default" extraClass="" />
                   )}
@@ -78,7 +92,7 @@ export default function BurgerIngredients(props) {
           <ul className={styles.cards}>
             {mainFilter.map((item) => (
               <li key={item._id}>
-                <article className={styles.card}>
+                <article className={styles.card} onClickCapture={getModalData}>
                   {item.counter && (
                     <Counter count={1} size="default" extraClass="" />
                   )}
@@ -98,6 +112,10 @@ export default function BurgerIngredients(props) {
           </ul>
         </li>
       </ul>
+      {isOpened &&
+      <Modal close={modalClose}>
+
+      </Modal>}
     </section>
   );
 }
