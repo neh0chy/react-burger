@@ -1,6 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styles from './modal-overlay.module.css';
+import PropTypes from "prop-types";
+import { propTypesList } from '../../utils/types';
 
 export default function ModalOverlay(props) {
   const closeModal = (evt) => {
@@ -15,3 +16,7 @@ export default function ModalOverlay(props) {
     </div>
   )
 }
+
+ModalOverlay.propTypes = {
+  data: PropTypes.arrayOf(propTypesList.isRequired).isRequired
+};

@@ -1,12 +1,12 @@
 import styles from './ingredient-details.module.css';
 import PropTypes from "prop-types";
-
+import { propTypesList } from '../../utils/types';
 
 export default function IngredientDetails({ data }) {
   return (
     <>
       <p className={`text text_type_main-large ml-10 mt-10 ${styles.title}`}>
-        Детали ингридиента
+        Детали ингредиента
       </p>
       <div className={styles.container}>
         <img src={data.image_large} alt={data.name} className="" />
@@ -47,3 +47,7 @@ export default function IngredientDetails({ data }) {
     </>
   );
 }
+
+IngredientDetails.propTypes = {
+  data: PropTypes.arrayOf(propTypesList.isRequired).isRequired
+};

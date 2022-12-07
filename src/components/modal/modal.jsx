@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import styles from './modal.module.css';
 import ModalOverlay from '../modal-overlay/modal-overlay';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import { propTypesList } from '../../utils/types';
 
 export default function Modal(props) {
   useEffect(() => {
@@ -24,3 +25,7 @@ export default function Modal(props) {
     document.querySelector('#modal')
   )
 }
+
+Modal.propTypes = {
+  data: PropTypes.arrayOf(propTypesList.isRequired).isRequired
+};

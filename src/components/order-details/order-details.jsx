@@ -1,5 +1,4 @@
 import styles from './order-details.module.css';
-import PropTypes from "prop-types";
 import logo from '../../images/done.svg';
 
 
