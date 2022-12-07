@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import styles from './burger-ingredients.module.css';
 import { Tab, CurrencyIcon, Counter } from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from "prop-types";
@@ -9,9 +9,9 @@ import IngredientDetails from '../ingredient-details/ingredient-details';
 export default function BurgerIngredients(props) {
   const [current, setCurrent] = useState('one');
 
-  const bunFilter = props.data.filter((item) => item.type === "bun");
-  const sauceFilter = props.data.filter((item) => item.type === "sauce");
-  const mainFilter = props.data.filter((item) => item.type === "main");
+  const bunFilter = useMemo(() => props.data.filter((item) => item.type === "bun"));
+  const sauceFilter = useMemo(() => props.data.filter((item) => item.type === "sauce"));
+  const mainFilter = useMemo(() => props.data.filter((item) => item.type === "main"));
 
   const [isOpened, setIsOpened] = useState(false);
   const [ingredient, setIngredient] = useState(null);
