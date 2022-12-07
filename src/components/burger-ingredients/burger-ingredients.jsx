@@ -1,17 +1,18 @@
 import React, { useMemo, useState } from 'react';
 import styles from './burger-ingredients.module.css';
-import { Tab, CurrencyIcon, Counter } from "@ya.praktikum/react-developer-burger-ui-components";
+import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from "prop-types";
 import { ingredientType } from '../../utils/types';
 import Modal from '../modal/modal';
 import IngredientDetails from '../ingredient-details/ingredient-details';
+import BurgerIngredient from '../burger-ingredient/burger-ingredient';
 
 export default function BurgerIngredients(props) {
   const [current, setCurrent] = useState('one');
 
-  const bunFilter = useMemo(() => props.data.filter((item) => item.type === "bun"));
-  const sauceFilter = useMemo(() => props.data.filter((item) => item.type === "sauce"));
-  const mainFilter = useMemo(() => props.data.filter((item) => item.type === "main"));
+  const bunFilter = useMemo(() => props.data.filter((item) => item.type === "bun"), [props.data]);
+  const sauceFilter = useMemo(() => props.data.filter((item) => item.type === "sauce"), [props.data]);
+  const mainFilter = useMemo(() => props.data.filter((item) => item.type === "main"), [props.data]);
 
   const [isOpened, setIsOpened] = useState(false);
   const [ingredient, setIngredient] = useState(null);
@@ -44,23 +45,7 @@ export default function BurgerIngredients(props) {
           <h2 className='text text_type_main-medium'>Булки</h2>
           <ul className={styles.cards}>
             {bunFilter.map((item) => (
-              <li key={item._id}>
-                <article {...item} className={styles.card} onClickCapture={() => { getModalData(item) }}>
-                  {item.counter && (
-                    <Counter count={1} size="default" extraClass="" />
-                  )}
-                  <img
-                    className={styles.image}
-                    src={item.image}
-                    alt={item.name}
-                  />
-                  <div className={styles.price}>
-                    <p className={`text text_type_digits-default ${styles.price}`}>{item.price}</p>
-                    <CurrencyIcon />
-                  </div>
-                  <p className={`text text_type_main-default ${styles.name}`}>{item.name}</p>
-                </article>
-              </li>
+              <BurgerIngredient item={item} getModalData={getModalData}/>
             ))}
           </ul>
         </li>
@@ -68,23 +53,7 @@ export default function BurgerIngredients(props) {
           <h2 className='text text_type_main-medium'>Соусы</h2>
           <ul className={styles.cards}>
             {sauceFilter.map((item) => (
-              <li key={item._id}>
-                <article className={styles.card} onClickCapture={() => { getModalData(item) }}>
-                  {/* {item.counter && (
-                    <Counter count={1} size="default" extraClass="" />
-                  )} */}
-                  <img
-                    className={styles.image}
-                    src={item.image}
-                    alt={item.name}
-                  />
-                  <div className={styles.price}>
-                    <p className={`text text_type_digits-default ${styles.price}`}>{item.price}</p>
-                    <CurrencyIcon />
-                  </div>
-                  <p className={`text text_type_main-default ${styles.name}`}>{item.name}</p>
-                </article>
-              </li>
+              <BurgerIngredient item={item} getModalData={getModalData}/>
             ))}
           </ul>
         </li>
@@ -92,23 +61,7 @@ export default function BurgerIngredients(props) {
           <h2 className='text text_type_main-medium'>Начинки</h2>
           <ul className={styles.cards}>
             {mainFilter.map((item) => (
-              <li key={item._id}>
-                <article className={styles.card} onClickCapture={() => { getModalData(item) }}>
-                  {/* {item.counter && (
-                    <Counter count={1} size="default" extraClass="" />
-                  )} */}
-                  <img
-                    className={styles.image}
-                    src={item.image}
-                    alt={item.name}
-                  />
-                  <div className={styles.price}>
-                    <p className={`text text_type_digits-default ${styles.price}`}>{item.price}</p>
-                    <CurrencyIcon />
-                  </div>
-                  <p className={`text text_type_main-default ${styles.name}`}>{item.name}</p>
-                </article>
-              </li>
+              <BurgerIngredient item={item} getModalData={getModalData}/>
             ))}
           </ul>
         </li>
