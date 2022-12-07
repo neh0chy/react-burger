@@ -5,14 +5,14 @@ import PropTypes from "prop-types";
 export default function IngredientDetails({ data }) {
   return (
     <>
-      <p className="text text_type_main-large ml-10 mt-10">
+      <p className={`text text_type_main-large ml-10 mt-10 ${styles.title}`}>
         Детали ингридиента
       </p>
       <div className={styles.container}>
         <img src={data.image_large} alt={data.name} className="" />
         <p className="text text_type_main-default mt-4">{data.name}</p>
-        <ul className={styles.nutrition}>
-          <li className={styles.nutritionItem}>
+        <ul className={styles.list}>
+          <li className={styles.listItem}>
             <p className="text text_type_main-default text_color_inactive">
               Калории, ккал
             </p>
@@ -20,7 +20,7 @@ export default function IngredientDetails({ data }) {
               {data.calories}
             </p>
           </li>
-          <li className={styles.nutritionItem}>
+          <li className={styles.listItem}>
             <p className="text text_type_main-default text_color_inactive">
               Белки, г
             </p>
@@ -28,13 +28,13 @@ export default function IngredientDetails({ data }) {
               {data.proteins}
             </p>
           </li>
-          <li className={styles.nutritionItem}>
+          <li className={styles.listItem}>
             <p className="text text_type_main-default text_color_inactive">
               Жиры, г
             </p>
             <p className="text text_type_digits-default mt-2">{data.fat}</p>
           </li>
-          <li className={styles.nutritionItem}>
+          <li className={styles.listItem}>
             <p className="text text_type_main-default text_color_inactive">
               Углеводы, г
             </p>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './burger-ingredients.module.css';
 import { Tab, CurrencyIcon, Counter } from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from "prop-types";
-import { propTypesList } from '../../utils/data';
+import { propTypesList } from '../../utils/types';
 import Modal from '../modal/modal';
 import IngredientDetails from '../ingredient-details/ingredient-details';
 
@@ -14,14 +14,14 @@ export default function BurgerIngredients(props) {
   const mainFilter = props.data.filter((item) => item.type === "main");
 
   const [isOpened, setIsOpened] = useState(false);
-  const [ingredients, setIngredients] = useState({});
+  const [ingredient, setIngredient] = useState({});
 
   const modalClose = () => {
     setIsOpened(false);
   }
 
-  const getModalData = () => {
-    console.log('123')
+  const getModalData = (item) => {
+    setIngredient(item)
     setIsOpened(true);
   }
 
@@ -45,7 +45,7 @@ export default function BurgerIngredients(props) {
           <ul className={styles.cards}>
             {bunFilter.map((item) => (
               <li key={item._id}>
-                <article {...item} className={styles.card} onClickCapture={getModalData}>
+                <article {...item} className={styles.card} onClickCapture={() => { getModalData(item) }}>
                   {/* {item.counter && (
                     <Counter count={1} size="default" extraClass="" />
                   )} */}
@@ -69,7 +69,7 @@ export default function BurgerIngredients(props) {
           <ul className={styles.cards}>
             {sauceFilter.map((item) => (
               <li key={item._id}>
-                <article className={styles.card} onClickCapture={getModalData}>
+                <article className={styles.card} onClickCapture={() => { getModalData(item) }}>
                   {/* {item.counter && (
                     <Counter count={1} size="default" extraClass="" />
                   )} */}
@@ -93,7 +93,7 @@ export default function BurgerIngredients(props) {
           <ul className={styles.cards}>
             {mainFilter.map((item) => (
               <li key={item._id}>
-                <article className={styles.card} onClickCapture={getModalData}>
+                <article className={styles.card} onClickCapture={() => { getModalData(item) }}>
                   {/* {item.counter && (
                     <Counter count={1} size="default" extraClass="" />
                   )} */}
@@ -115,7 +115,7 @@ export default function BurgerIngredients(props) {
       </ul>
       {isOpened &&
       <Modal close={modalClose}>
-        <IngredientDetails data={props.data}></IngredientDetails>
+        <IngredientDetails data={ingredient}></IngredientDetails>
       </Modal>}
     </section>
   );

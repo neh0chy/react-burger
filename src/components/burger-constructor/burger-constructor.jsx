@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './burger-constructor.module.css';
 import { ConstructorElement, DragIcon, Button, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import PropTypes from "prop-types";
-import { propTypesList } from '../../utils/data';
+import { propTypesList } from '../../utils/types';
 import Modal from '../modal/modal';
 import OrderDetails from '../order-details/order-details';
 
@@ -18,7 +18,6 @@ export default function BurgerConstructor(props) {
   }
 
   const getModalData = () => {
-    console.log('123')
     setIsOpened(true);
   }
 
