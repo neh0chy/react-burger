@@ -4,20 +4,14 @@ import AppHeader from '../app-header/app-header';
 import BurgerIngredients from '../burger-ingredients/burger-ingredients';
 import BurgerConstructor from '../burger-constructor/burger-constructor';
 import { serverDataConstructor } from '../../utils/data';
+import getIngredients from '../../utils/burger-api';
 
 export default function App() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const api = 'https://norma.nomoreparties.space/api/ingredients';
-    fetch(api)
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка ${res.status}`);
-      })
-      .then(data => setData(data['data']))
+    getIngredients()
+      .then(res => setData(res.data))
       .catch(err => console.log(`Error: ${err}`));
   }, []);
 

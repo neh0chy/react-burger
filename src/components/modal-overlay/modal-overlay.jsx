@@ -1,22 +1,22 @@
 import React from 'react';
 import styles from './modal-overlay.module.css';
 import PropTypes from "prop-types";
-import { propTypesList } from '../../utils/types';
 
-export default function ModalOverlay(props) {
+export default function ModalOverlay({ close, children }) {
   const closeModal = (evt) => {
     if (evt.target.id === "modalOverlay") {
-      props.close();
+      close();
     }
   };
 
   return (
     <div id='modalOverlay' className={styles.modalOverlay} onClickCapture={closeModal}>
-      {props.children}
+      {children}
     </div>
   )
 }
 
 ModalOverlay.propTypes = {
-  data: PropTypes.arrayOf(propTypesList.isRequired).isRequired
+  close: PropTypes.func,
+  children: PropTypes.node
 };

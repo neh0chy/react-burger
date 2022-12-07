@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import styles from './burger-constructor.module.css';
 import { ConstructorElement, DragIcon, Button, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import PropTypes from "prop-types";
-import { propTypesList } from '../../utils/types';
+import { ingredientType } from '../../utils/types';
 import Modal from '../modal/modal';
 import OrderDetails from '../order-details/order-details';
 
 
-export default function BurgerConstructor(props) {
-  const bun = props.data.find(item => item.type === 'bun');
-  const nonbun = props.data.filter(item => item.type !== 'bun');
+export default function BurgerConstructor({ data }) {
+  const bun = data.find(item => item.type === 'bun');
+  const ingredients = data.filter(item => item.type !== 'bun');
 
   const [isOpened, setIsOpened] = useState(false);
 
@@ -34,7 +34,7 @@ export default function BurgerConstructor(props) {
           />
         </div>
         <ul className={styles.list}>
-          {nonbun.map((elem) => {
+          {ingredients.map((elem) => {
             return (
               <li key={elem._id} className={styles.listElement}>
                 <DragIcon type="primary" />
@@ -68,12 +68,12 @@ export default function BurgerConstructor(props) {
       </div>
       {isOpened &&
       <Modal close={modalClose}>
-        <OrderDetails></OrderDetails>
+        <OrderDetails />
       </Modal>}
     </section>
   );
 }
 
 BurgerConstructor.propTypes = {
-  data: PropTypes.arrayOf(propTypesList.isRequired).isRequired
+  data: PropTypes.arrayOf(ingredientType.isRequired).isRequired
 };
