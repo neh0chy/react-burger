@@ -7,7 +7,7 @@ export default function BurgerIngredient({ item, getModalData }) {
 
   return (
     <>
-      <li key={item._id}>
+      <li>
         <article {...item} className={styles.card} onClickCapture={() => { getModalData(item) }}>
           {item.counter && (
             <Counter count={1} size="default" extraClass="" />

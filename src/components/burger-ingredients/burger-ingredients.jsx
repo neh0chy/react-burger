@@ -45,7 +45,7 @@ export default function BurgerIngredients(props) {
           <h2 className='text text_type_main-medium'>Булки</h2>
           <ul className={styles.cards}>
             {bunFilter.map((item) => (
-              <BurgerIngredient item={item} getModalData={getModalData}/>
+              <BurgerIngredient key={item._id} item={item} getModalData={getModalData}/>
             ))}
           </ul>
         </li>
@@ -53,7 +53,7 @@ export default function BurgerIngredients(props) {
           <h2 className='text text_type_main-medium'>Соусы</h2>
           <ul className={styles.cards}>
             {sauceFilter.map((item) => (
-              <BurgerIngredient item={item} getModalData={getModalData}/>
+              <BurgerIngredient key={item._id} item={item} getModalData={getModalData}/>
             ))}
           </ul>
         </li>
@@ -61,7 +61,7 @@ export default function BurgerIngredients(props) {
           <h2 className='text text_type_main-medium'>Начинки</h2>
           <ul className={styles.cards}>
             {mainFilter.map((item) => (
-              <BurgerIngredient item={item} getModalData={getModalData}/>
+              <BurgerIngredient key={item._id} item={item} getModalData={getModalData}/>
             ))}
           </ul>
         </li>
