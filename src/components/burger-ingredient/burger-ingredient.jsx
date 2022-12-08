@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 export default function BurgerIngredient({ item, getModalData }) {
 
   return (
-    <>
       <li>
         <article {...item} className={styles.card} onClickCapture={() => { getModalData(item) }}>
           {item.counter && (
@@ -24,11 +23,10 @@ export default function BurgerIngredient({ item, getModalData }) {
           <p className={`text text_type_main-default ${styles.name}`}>{item.name}</p>
         </article>
       </li>
-    </>
   )
 }
 
 BurgerIngredient.propTypes = {
-  close: PropTypes.func,
-  children: PropTypes.node
+  item: PropTypes.object.isRequired,
+  getModalData: PropTypes.func.isRequired,
 };

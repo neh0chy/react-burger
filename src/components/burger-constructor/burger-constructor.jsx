@@ -8,8 +8,8 @@ import OrderDetails from '../order-details/order-details';
 
 
 export default function BurgerConstructor(props) {
-  // const bun = useMemo(() => props.data.filter((item) => item.type === 'bun'), [props.data]);
-  const ingredients = useMemo(() => props.data.filter((item) => item.type !== 'bun'), [props.data]);
+  const bun = useMemo(() => props.data.find(item => item.type === 'bun'), [props.data]);
+  const ingredients = useMemo(() => props.data.filter(item => item.type !== 'bun'), [props.data]);
 
   const [isOpened, setIsOpened] = useState(false);
 
@@ -28,9 +28,9 @@ export default function BurgerConstructor(props) {
           <ConstructorElement
             type="top"
             isLocked={true}
-            text='Краторная булка N-200i (верх)'
-            price={200}
-            thumbnail={"https://code.s3.yandex.net/react/code/bun-02.png"}
+            text={`${bun.name} (верх)`}
+            price={bun.price}
+            thumbnail={bun.image}
           />
         </div>
         <ul className={styles.list}>
@@ -51,9 +51,9 @@ export default function BurgerConstructor(props) {
           <ConstructorElement
             type="bottom"
             isLocked={true}
-            text='Краторная булка N-200i (верх)'
-            price={200}
-            thumbnail={"https://code.s3.yandex.net/react/code/bun-02.png"}
+            text={`${bun.name} (низ)`}
+            price={bun.price}
+            thumbnail={bun.image}
           />
         </div>
       </div>

@@ -3,7 +3,6 @@ import styles from './app.module.css';
 import AppHeader from '../app-header/app-header';
 import BurgerIngredients from '../burger-ingredients/burger-ingredients';
 import BurgerConstructor from '../burger-constructor/burger-constructor';
-// import { serverDataConstructor } from '../../utils/data';
 import getIngredients from '../../utils/burger-api';
 
 export default function App() {
@@ -19,8 +18,8 @@ export default function App() {
     <div className={styles.App}>
       <AppHeader />
       <main className={styles.main}>
-        <BurgerIngredients data={data}/>
-        <BurgerConstructor data={data}/>
+        {data.length && <BurgerIngredients data={data}/>}
+        {data.length && <BurgerConstructor data={data}/>}
       </main>
     </div>
   );

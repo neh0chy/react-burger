@@ -8,6 +8,5 @@ export default function getIngredients() {
       }
       return Promise.reject(`Ошибка ${res.status}`);
     })
-    // .then(res => setData(res.data))
-    .catch(err => console.log(`Error: ${err}`));
+    .catch(err => {throw new Error(`Ошибка: ${err}`)});
 }
