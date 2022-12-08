@@ -11,7 +11,7 @@ export default function App() {
   useEffect(() => {
     getIngredients()
       .then(res => setData(res.data))
-      .catch(err => console.log(`Error: ${err}`));
+      .catch(err => console.log(`Ошибка: ${err}`));
   }, []);
 
   return (
