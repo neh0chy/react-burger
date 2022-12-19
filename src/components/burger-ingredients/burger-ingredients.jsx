@@ -1,51 +1,45 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import styles from './burger-ingredients.module.css';
-import { Tab, CurrencyIcon, Counter } from "@ya.praktikum/react-developer-burger-ui-components";
+import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from "prop-types";
-import { propTypesList } from '../../utils/data';
+import { ingredientType } from '../../utils/types';
+import Modal from '../modal/modal';
+import IngredientDetails from '../ingredient-details/ingredient-details';
+import BurgerIngredient from '../burger-ingredient/burger-ingredient';
 
 export default function BurgerIngredients(props) {
-  const [current, setCurrent] = React.useState('one')
-  const bunFilter = props.data.filter((item) => item.type === "bun");
-  const sauceFilter = props.data.filter((item) => item.type === "sauce");
-  const mainFilter = props.data.filter((item) => item.type === "main");
+  const [current, setCurrent] = useState('one');
+
+  const bunFilter = useMemo(() => props.data.filter((item) => item.type === "bun"), [props.data]);
+  const sauceFilter = useMemo(() => props.data.filter((item) => item.type === "sauce"), [props.data]);
+  const mainFilter = useMemo(() => props.data.filter((item) => item.type === "main"), [props.data]);
+
+  const [isOpened, setIsOpened] = useState(false);
+  const [ingredient, setIngredient] = useState(null);
+
+  const modalClose = () => {
+    setIsOpened(false);
+  }
+
+  const getModalData = (item) => {
+    setIngredient(item)
+    setIsOpened(true);
+  }
 
   return (
     <section className={styles.section}>
       <h1 className={`text text_type_main-large ${styles.title}`}>Соберите бургер</h1>
       <div className={styles.tabs}>
-        <Tab value="one" active={current === 'one'} onClick={setCurrent}>
-          Булки
-        </Tab>
-        <Tab value="two" active={current === 'two'} onClick={setCurrent}>
-          Соусы
-        </Tab>
-        <Tab value="three" active={current === 'three'} onClick={setCurrent}>
-          Начинки
-        </Tab>
+        <Tab value="one" active={current === 'one'} onClick={setCurrent}>Булки</Tab>
+        <Tab value="two" active={current === 'two'} onClick={setCurrent}>Соусы</Tab>
+        <Tab value="three" active={current === 'three'} onClick={setCurrent}>Начинки</Tab>
       </div>
       <ul className={styles.list}>
         <li className={styles.li}>
           <h2 className='text text_type_main-medium'>Булки</h2>
           <ul className={styles.cards}>
             {bunFilter.map((item) => (
-              <li key={item._id}>
-                <article className={styles.card}>
-                  {item.counter && (
-                    <Counter count={1} size="default" extraClass="" />
-                  )}
-                  <img
-                    className={styles.image}
-                    src={item.image}
-                    alt={item.name}
-                  />
-                  <div className={styles.price}>
-                    <p className={`text text_type_digits-default ${styles.price}`}>{item.price}</p>
-                    <CurrencyIcon />
-                  </div>
-                  <p className={`text text_type_main-default ${styles.name}`}>{item.name}</p>
-                </article>
-              </li>
+              <BurgerIngredient key={item._id} item={item} getModalData={getModalData}/>
             ))}
           </ul>
         </li>
@@ -53,23 +47,7 @@ export default function BurgerIngredients(props) {
           <h2 className='text text_type_main-medium'>Соусы</h2>
           <ul className={styles.cards}>
             {sauceFilter.map((item) => (
-              <li key={item._id}>
-                <article className={styles.card}>
-                  {item.counter && (
-                    <Counter count={1} size="default" extraClass="" />
-                  )}
-                  <img
-                    className={styles.image}
-                    src={item.image}
-                    alt={item.name}
-                  />
-                  <div className={styles.price}>
-                    <p className={`text text_type_digits-default ${styles.price}`}>{item.price}</p>
-                    <CurrencyIcon />
-                  </div>
-                  <p className={`text text_type_main-default ${styles.name}`}>{item.name}</p>
-                </article>
-              </li>
+              <BurgerIngredient key={item._id} item={item} getModalData={getModalData}/>
             ))}
           </ul>
         </li>
@@ -77,31 +55,19 @@ export default function BurgerIngredients(props) {
           <h2 className='text text_type_main-medium'>Начинки</h2>
           <ul className={styles.cards}>
             {mainFilter.map((item) => (
-              <li key={item._id}>
-                <article className={styles.card}>
-                  {item.counter && (
-                    <Counter count={1} size="default" extraClass="" />
-                  )}
-                  <img
-                    className={styles.image}
-                    src={item.image}
-                    alt={item.name}
-                  />
-                  <div className={styles.price}>
-                    <p className={`text text_type_digits-default ${styles.price}`}>{item.price}</p>
-                    <CurrencyIcon />
-                  </div>
-                  <p className={`text text_type_main-default ${styles.name}`}>{item.name}</p>
-                </article>
-              </li>
+              <BurgerIngredient key={item._id} item={item} getModalData={getModalData}/>
             ))}
           </ul>
         </li>
       </ul>
+      {isOpened &&
+      <Modal close={modalClose}>
+        <IngredientDetails data={ingredient} />
+      </Modal>}
     </section>
   );
 }
 
 BurgerIngredients.propTypes = {
-  data: PropTypes.arrayOf(propTypesList.isRequired).isRequired
+  data: PropTypes.arrayOf(ingredientType.isRequired).isRequired
 };

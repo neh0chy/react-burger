@@ -1,13 +1,26 @@
+import React, { useMemo, useState } from 'react';
 import styles from './burger-constructor.module.css';
 import { ConstructorElement, DragIcon, Button, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import PropTypes from "prop-types";
-import { propTypesList } from '../../utils/data';
+import { ingredientType } from '../../utils/types';
+import Modal from '../modal/modal';
+import OrderDetails from '../order-details/order-details';
 
 
 export default function BurgerConstructor(props) {
-  const bun = props.data.find(item => item.type === 'bun');
-  const nonbun = props.data.filter(item => item.type !== 'bun');
-  
+  const bun = useMemo(() => props.data.find(item => item.type === 'bun'), [props.data]);
+  const ingredients = useMemo(() => props.data.filter(item => item.type !== 'bun'), [props.data]);
+
+  const [isOpened, setIsOpened] = useState(false);
+
+  const modalClose = () => {
+    setIsOpened(false);
+  }
+
+  const getModalData = () => {
+    setIsOpened(true);
+  }
+
   return (
     <section className={styles.constructorSection}>
       <div className={styles.container}>
@@ -21,7 +34,7 @@ export default function BurgerConstructor(props) {
           />
         </div>
         <ul className={styles.list}>
-          {nonbun.map((elem) => {
+          {ingredients.map((elem) => {
             return (
               <li key={elem._id} className={styles.listElement}>
                 <DragIcon type="primary" />
@@ -49,14 +62,18 @@ export default function BurgerConstructor(props) {
           <p className="text text_type_digits-medium mr-3">610</p>
           <CurrencyIcon className={styles.icon} />
         </div>
-        <Button htmlType="button" type="primary" size="large">
+        <Button htmlType="button" type="primary" size="large" onClickCapture={getModalData}>
           Оформить заказ
         </Button>
       </div>
+      {isOpened &&
+      <Modal close={modalClose}>
+        <OrderDetails />
+      </Modal>}
     </section>
   );
 }
 
 BurgerConstructor.propTypes = {
-  data: PropTypes.arrayOf(propTypesList.isRequired).isRequired
+  data: PropTypes.arrayOf(ingredientType.isRequired).isRequired
 };

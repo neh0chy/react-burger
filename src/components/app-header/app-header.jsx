@@ -10,13 +10,13 @@ export default function AppHeader() {
           <a className={styles.link} href="!#">
             <button className={styles.headerButton}>
               <BurgerIcon type="primary" />
-              <p classes={'text text_type_main-default'}>Конструктор</p>
+              <p className={'text text_type_main-default'}>Конструктор</p>
             </button>
           </a>
           <a className={styles.link} href="!#">
             <button className={styles.headerButton}>
               <ListIcon type="secondary" />
-              <p classes={'text text_type_main-default text_color_inactive'}>Лента заказов</p>
+              <p className={'text text_type_main-default text_color_inactive'}>Лента заказов</p>
             </button>
           </a>
         </nav>
@@ -24,7 +24,7 @@ export default function AppHeader() {
         <a className={styles.link} href="!#">
           <button className={styles.headerButton}>
             <ProfileIcon type="secondary" />
-            <p classes={'text text_type_main-default text_color_inactive'}>Личный кабинет</p>
+            <p className={'text text_type_main-default text_color_inactive'}>Личный кабинет</p>
           </button>
         </a>
       </div>
