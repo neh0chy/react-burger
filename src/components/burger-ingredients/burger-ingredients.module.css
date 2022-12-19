@@ -1,0 +1,66 @@
+.title {
+  padding-top: 40px;
+}
+
+.tabs{
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.list {
+  margin: 0;
+  padding: 40px 0 0;
+  list-style: none;
+  width: 600px;
+  height: 756px;
+  overflow-y: scroll;
+}
+
+.li:not(:first-child) {
+  margin-top: 40px;
+}
+
+.list::-webkit-scrollbar {
+  margin-top: 40px;
+  width: 8px;
+  background-color: #2F2F37;
+}
+
+.list::-webkit-scrollbar-thumb {
+  height: 492px;
+  background-color: #8585AD;
+}
+
+.cards {
+  margin: 0;
+  padding: 0;
+  margin-left: 16px;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 272px);
+  grid-template-rows: auto;
+  gap: 32px 24px;
+  justify-items: center;
+}
+
+
+.card {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 272px;
+  height: 208px;
+  position: relative;
+}
+
+.price {
+  display: flex;
+  gap: 8px;
+}
+
+.name {
+  text-align: center;
+}
