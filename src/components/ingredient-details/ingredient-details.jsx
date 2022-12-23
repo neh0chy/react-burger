@@ -1,5 +1,5 @@
 import styles from './ingredient-details.module.css';
-import { ingredientType } from '../../utils/types';
+import PropTypes from "prop-types";
 
 export default function IngredientDetails({ data }) {
   return (
@@ -48,5 +48,5 @@ export default function IngredientDetails({ data }) {
 }
 
 IngredientDetails.propTypes = {
-  // data: ingredientType.isRequired
+  item: PropTypes.object.isRequired
 };

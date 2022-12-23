@@ -27,5 +27,5 @@ export default function BurgerIngredient({ item, getModalData }) {
 
 BurgerIngredient.propTypes = {
   item: PropTypes.object.isRequired,
-  getModalData: PropTypes.func.isRequired,
+  getModalData: PropTypes.func.isRequired
 };
