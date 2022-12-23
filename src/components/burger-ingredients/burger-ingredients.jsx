@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useContext } from 'react';
 import styles from './burger-ingredients.module.css';
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from "prop-types";
@@ -7,15 +7,19 @@ import Modal from '../modal/modal';
 import IngredientDetails from '../ingredient-details/ingredient-details';
 import BurgerIngredient from '../burger-ingredient/burger-ingredient';
 
-export default function BurgerIngredients(props) {
+import { DataContext } from '../../utils/data-context';
+
+export default function BurgerIngredients() {
+  const {ingredientsData} = useContext(DataContext);
+  const [ingredient, setIngredient] = useState(null);
+
   const [current, setCurrent] = useState('one');
 
-  const bunFilter = useMemo(() => props.data.filter((item) => item.type === "bun"), [props.data]);
-  const sauceFilter = useMemo(() => props.data.filter((item) => item.type === "sauce"), [props.data]);
-  const mainFilter = useMemo(() => props.data.filter((item) => item.type === "main"), [props.data]);
+  const bunFilter = useMemo(() => ingredientsData.filter((item) => item.type === "bun"), [ingredientsData]);
+  const sauceFilter = useMemo(() => ingredientsData.filter((item) => item.type === "sauce"), [ingredientsData]);
+  const mainFilter = useMemo(() => ingredientsData.filter((item) => item.type === "main"), [ingredientsData]);
 
   const [isOpened, setIsOpened] = useState(false);
-  const [ingredient, setIngredient] = useState(null);
 
   const modalClose = () => {
     setIsOpened(false);
@@ -67,7 +71,3 @@ export default function BurgerIngredients(props) {
     </section>
   );
 }
-
-BurgerIngredients.propTypes = {
-  data: PropTypes.arrayOf(ingredientType.isRequired).isRequired
-};

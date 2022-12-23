@@ -2,11 +2,11 @@ import styles from './order-details.module.css';
 import logo from '../../images/done.svg';
 
 
-export default function OrderDetails() {
+export default function OrderDetails({ orderNumber }) {
   return (
     <div className={styles.container}>
       <p className="text text_type_digits-large">
-        034536
+        {orderNumber}
       </p>
       <p className="text text_type_main-medium mt-8 mb-15">
         идентификатор заказа

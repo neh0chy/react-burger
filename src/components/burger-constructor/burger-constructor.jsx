@@ -1,17 +1,31 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState, useContext } from 'react';
 import styles from './burger-constructor.module.css';
 import { ConstructorElement, DragIcon, Button, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import PropTypes from "prop-types";
-import { ingredientType } from '../../utils/types';
 import Modal from '../modal/modal';
 import OrderDetails from '../order-details/order-details';
+import { getOrder } from '../../utils/burger-api';
+import { DataContext } from '../../utils/data-context';
 
 
-export default function BurgerConstructor(props) {
-  const bun = useMemo(() => props.data.find(item => item.type === 'bun'), [props.data]);
-  const ingredients = useMemo(() => props.data.filter(item => item.type !== 'bun'), [props.data]);
-
+export default function BurgerConstructor() {
   const [isOpened, setIsOpened] = useState(false);
+  const [order, setOrder] = useState(0);
+  const {ingredientsData} = useContext(DataContext);
+
+  const bun = useMemo(() => ingredientsData.find(item => item.type === 'bun'), [ingredientsData]);
+  const ingredients = useMemo(() => ingredientsData.filter(item => item.type !== 'bun'), [ingredientsData]);
+  
+  const totalPrice = useMemo(() => {
+    return (
+      bun.price * 2 + ingredients.reduce((acc, elem) => acc + elem.price, 0)
+    );
+  }, [bun, ingredients]);
+
+  function handleOrder() {
+    const ingredientsIds = ingredients.map((item) => (item._id));
+    getOrder(ingredientsIds, setOrder)
+    getModalData();
+  }
 
   const modalClose = () => {
     setIsOpened(false);
@@ -59,21 +73,17 @@ export default function BurgerConstructor(props) {
       </div>
       <div className={`${styles.total} mt-10`}>
         <div className={styles.price}>
-          <p className="text text_type_digits-medium mr-3">610</p>
+          <p className="text text_type_digits-medium mr-3">{totalPrice}</p>
           <CurrencyIcon className={styles.icon} />
         </div>
-        <Button htmlType="button" type="primary" size="large" onClickCapture={getModalData}>
+        <Button htmlType="button" type="primary" size="large" onClickCapture={handleOrder}>
           Оформить заказ
         </Button>
       </div>
       {isOpened &&
       <Modal close={modalClose}>
-        <OrderDetails />
+        <OrderDetails orderNumber={order} />
       </Modal>}
     </section>
   );
 }
-
-BurgerConstructor.propTypes = {
-  data: PropTypes.arrayOf(ingredientType.isRequired).isRequired
-};
