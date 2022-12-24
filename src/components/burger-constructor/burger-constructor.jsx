@@ -9,7 +9,7 @@ import { DataContext } from '../../utils/data-context';
 
 export default function BurgerConstructor() {
   const [isOpened, setIsOpened] = useState(false);
-  const [order, setOrder] = useState(0);
+  const [orderNumber, setOrderNumber] = useState(0);
   const {ingredientsData} = useContext(DataContext);
 
   const bun = useMemo(() => ingredientsData.find(item => item.type === 'bun'), [ingredientsData]);
@@ -23,7 +23,7 @@ export default function BurgerConstructor() {
 
   function handleOrder() {
     const ingredientsIds = ingredients.map((item) => (item._id));
-    getOrder(ingredientsIds, setOrder)
+    getOrder(ingredientsIds, setOrderNumber)
     getModalData();
   }
 
@@ -82,7 +82,7 @@ export default function BurgerConstructor() {
       </div>
       {isOpened &&
       <Modal close={modalClose}>
-        <OrderDetails orderNumber={order} />
+        <OrderDetails orderNumber={orderNumber} />
       </Modal>}
     </section>
   );
