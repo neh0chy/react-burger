@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './burger-ingredient.module.css';
 import { CurrencyIcon, Counter } from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from "prop-types";
@@ -28,5 +27,5 @@ export default function BurgerIngredient({ item, getModalData }) {
 
 BurgerIngredient.propTypes = {
   item: PropTypes.object.isRequired,
-  getModalData: PropTypes.func.isRequired,
+  getModalData: PropTypes.func.isRequired
 };
